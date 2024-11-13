@@ -13,14 +13,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Download Flutter SDK
-      run: |
-        # Download Flutter SDK
-        wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.5-stable.tar.xz
-        # Extract Flutter SDK
-        tar xf flutter_linux_3.10.5-stable.tar.xz
-        # Add Flutter to PATH
-        echo "$PWD/flutter/bin" >> $GITHUB_PATH
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.5.4'  # Set to the required version
 
     - name: Verify Flutter Installation
       run: flutter --version
