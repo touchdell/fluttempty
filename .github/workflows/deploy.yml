@@ -3,7 +3,7 @@ name: Deploy Flutter Web to GitHub Pages
 on:
   push:
     branches:
-      - main  # Run this action on pushes to the main branch
+      - main  # Trigger on push to main branch
 
 jobs:
   build:
@@ -13,10 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Flutter
+    - name: Download Flutter SDK
       run: |
-        git clone https://github.com/flutter/flutter.git -b stable --depth 1
-        echo "${{ github.workspace }}/flutter/bin" >> $GITHUB_PATH
+        # Download Flutter SDK
+        wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.5-stable.tar.xz
+        # Extract Flutter SDK
+        tar xf flutter_linux_3.10.5-stable.tar.xz
+        # Add Flutter to PATH
+        echo "$PWD/flutter/bin" >> $GITHUB_PATH
 
     - name: Verify Flutter Installation
       run: flutter --version
