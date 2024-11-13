@@ -16,9 +16,9 @@ jobs:
     - name: Download Flutter SDK
       run: |
         # Download Flutter SDK 3.5.4 for Linux
-        wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.5.4-stable.tar.xz
+        wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.4-stable.tar.xz
         # Extract Flutter SDK
-        tar xf flutter_linux_3.5.4-stable.tar.xz
+        tar xf flutter_linux_3.24.4-stable.tar.xz
         # Add Flutter to PATH
         echo "$PWD/flutter/bin" >> $GITHUB_PATH
 
